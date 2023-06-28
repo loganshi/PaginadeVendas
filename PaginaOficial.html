@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br" style="background-color: #dddddd;">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +9,6 @@
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="Estilo/Style.css">
 </head>
-
 <body style="background-color: #dddddd;">
     <header>
         <div class="d-flex justify-content-center top-row">
@@ -38,56 +36,59 @@
                         <label for="nome" class="form-label">
                             <h6>Nome Completo</h6>
                         </label>
-                        <input class="form-control form-control-md" type="text" placeholder="Nome Completo"
-                            aria-label=".form-control-lg example" id="nome" required>
+                        <input class="form-control form-control-md required" type="text" placeholder="Nome Completo"
+                            aria-label=".form-control-lg example" id="nome" oninput="validarNome()">
+                        <span class="span-required">Nome completo é necessário informar o nome e sobrenome.</span>
                     </div>
                     <div class="col-md-3 ">
                         <label for="CPF" class="form-label">
                             <h6>CPF</h6>
                         </label>
-                        <input class="form-control form-control-md" type="number" placeholder="CPF"
-                            aria-label=".form-control-lg example" id="CPF" required>
+                        <input class="form-control form-control-md required" type="text" placeholder="CPF"
+                            aria-label=".form-control-lg example" id="CPF" oninput="validarCPF()">
+                        <span class="span-required">CPF é requerido.</span>
                     </div>
                     <div class="col-md-3">
                         <label for="data-nascimento" class="form-label">
                             <h6>Data de Nascimento</h6>
                         </label>
-                        <input class="form-control form-control-md" type="number" placeholder=" Data de Nascimento"
-                            aria-label=".form-control-lg example" id="data-nascimento" required>
+                        <input class="form-control form-control-md required" type="number" placeholder=" Data de Nascimento"
+                            aria-label=".form-control-lg example" id="data-nascimento">
+                        <span class="span-required">Data de nascimento é requerido.</span>
                     </div>
                 </div>
-
-
-
                 <div class="row" style="margin-bottom: 10px;">
                     <div class="col-md-6">
                         <label for="nome-mae" class="form-label">
                             <h6>Nome da Mãe</h6>
                         </label>
-                        <input class="form-control form-control-md" type="text" placeholder="Nome da Mãe"
-                            aria-label=".form-control-lg example" id="nome-mae" required>
+                        <input class="form-control form-control-md required" type="text" placeholder="Nome da Mãe"
+                            aria-label=".form-control-lg example" id="nome-mae">
+                        <span class="span-required">Nome da mãe é requerido.</span>
                     </div>
                     <div class="col-md-3 ">
                         <label for="estado-civil" class="form-label">
                             <h6>Estado Civil</h6>
                         </label>
-                        <select class="form-select form-select-md" aria-label=".form-control-lg example"
-                            id="estado-civil" required>
+                        <select class="form-select form-select-md required" aria-label=".form-control-lg example"
+                            id="estado-civil">
                             <option selected>Selecione...</option>
                             <option value="1">Solteiro</option>
                             <option value="2">Casada</option>
                             <option value="3">Encalhada</option>
                         </select>
+                        <span class="span-required">Estado civil é requerido.</span>
                     </div>
                     <div class="col-md-3">
                         <label for="sexo" class="form-label">
                             <h6>Sexo</h6>
                         </label>
-                        <select class="form-select form-select-md" aria-label=".form-control-lg example" id="sexo" required>
+                        <select class="form-select form-select-md required" aria-label=".form-control-lg example" id="sexo">
                             <option selected>Selecione...</option>
                             <option value="1">Masculino</option>
                             <option value="2">Feminino</option>
                         </select>
+                        <span class="span-required">Sexo é requerido.</span>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom: 10px;">
@@ -95,91 +96,94 @@
                         <label for="celular" class="form-label">
                             <h6>Celular</h6>
                         </label>
-                        <input class="form-control form-control-md" type="number" placeholder="(00) 00000-0000"
-                            aria-label=".form-control-lg example" id="celular" required>
+                        <input class="form-control form-control-md required" type="number" placeholder="(00) 00000-0000"
+                            aria-label=".form-control-lg example" id="celular">
+                        <span class="span-required">Celular é requerido.</span>
                     </div>
                     <div class="col-md-6 ">
                         <label for="email" class="form-label">
                             <h6>E-mail</h6>
                         </label>
-                        <input class="form-control form-control-md" type="email" placeholder="CPF"
-                            aria-label=".form-control-lg example" id="email" required>
+                        <input class="form-control form-control-md required" type="email" placeholder="CPF"
+                            aria-label=".form-control-lg example" id="email">
+                        <span class="span-required">E-mail é requerido.</span>
                     </div>
                 </div>
-
-
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                        checked>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
                     <label class="form-check-label" for="flexCheckChecked">
                         O titular do plano é o responsável financeiro?
                     </label>
                 </div>
                 <hr>
-
-
                 <div class="row" style="margin-bottom: 10px;">
                     <div class="col-md-3">
                         <label for="cep" class="form-label">
                             <h6>CEP</h6>
                         </label>
-                        <input class="form-control form-control-md" type="text" placeholder="CEP"
-                            aria-label=".form-control-lg example" id="cep" required>
+                        <input class="form-control form-control-md required" type="text" placeholder="CEP"
+                            aria-label=".form-control-lg example" id="cep">
+                        <span class="span-required">Informe o CEP.</span>
                     </div>
                     <div class="col-md-6 ">
                         <label for="logradouro" class="form-label">
                             <h6>Logradouro</h6>
                         </label>
-                        <input class="form-control form-control-md" type="text" placeholder="Logradouro"
-                            aria-label=".form-control-lg example" id="logradouro" required>
+                        <input class="form-control form-control-md required" type="text" placeholder="Logradouro"
+                            aria-label=".form-control-lg example" id="logradouro">
+                        <span class="span-required">Informe o logradouro.</span>
                     </div>
                     <div class="col-md-3">
                         <label for="numero" class="form-label">
                             <h6>Número</h6>
                         </label>
-                        <input class="form-control form-control-md" type="number" placeholder=" Número"
-                            aria-label=".form-control-lg example" id="numero" required>
+                        <input class="form-control form-control-md required" type="number" placeholder=" Número"
+                            aria-label=".form-control-lg example" id="numero">
+                        <span class="span-required">Informe o número.</span>
                     </div>
                 </div>
-
                 <div class="row" style="margin-bottom: 10px;">
                     <div class="col-md-3">
                         <label for="complemento" class="form-label">
                             <h6>Complemento</h6>
                         </label>
                         <input class="form-control form-control-md" type="text" placeholder="Complemento"
-                            aria-label=".form-control-lg example" id="complemento" required>
+                            aria-label=".form-control-lg example" id="complemento">
                     </div>
                     <div class="col-md-3 ">
                         <label for="bairro" class="form-label">
                             <h6>Bairro</h6>
                         </label>
-                        <input class="form-control form-control-md" type="text" placeholder="Bairro"
-                            aria-label=".form-control-lg example" id="bairro" required>
+                        <input class="form-control form-control-md required" type="text" placeholder="Bairro"
+                            aria-label=".form-control-lg example" id="bairro">
+                        <span class="span-required">Informe o bairro.</span>
                     </div>
                     <div class="col-md-3">
                         <label for="cidade" class="form-label">
                             <h6>Cidade</h6>
                         </label>
-                        <input class="form-control form-control-md" type="text" placeholder="Cidade"
-                            aria-label=".form-control-lg example" id="cidade" required>
+                        <input class="form-control form-control-md required" type="text" placeholder="Cidade"
+                            aria-label=".form-control-lg example" id="cidade">
+                        <span class="span-required">Informe a cidade.</span>
                     </div>
                     <div class="col-md-3">
                         <label for="estado" class="form-label">
                             <h6>Estado</h6>
                         </label>
-                        <input class="form-control form-control-md" type="number" placeholder="Selecione..."
-                            aria-label=".form-control-lg example" id="cidade" required>
+                        <input class="form-control form-control-md required" type="number" placeholder="Selecione..."
+                            aria-label=".form-control-lg example" id="cidade">
+                        <span class="span-required">Informe o estado.</span>
                     </div>
                 </div>
             </form>
         </div>
     </div>
     <br>
-
-    <div class="container" style="background-color: white; border-radius: 10px; padding-bottom: 30px; display: none;" id="responsavelFinanceiro">
+    <div class="container" style="background-color: white; border-radius: 10px; padding-bottom: 30px; display: none;"
+        id="responsavelFinanceiro">
         <div class="container">
-            <h5 style="color: #009fe3; font-weight: 600; margin-bottom: 20px; padding-top: 15px;">Responsável Financeiro</h5>
+            <h5 style="color: #009fe3; font-weight: 600; margin-bottom: 20px; padding-top: 15px;">Responsável Financeiro
+            </h5>
             <div class="row" style="margin-bottom: 10px;">
                 <div class="col-md-8">
                     <label for="nome" class="form-label">
@@ -199,7 +203,6 @@
         </div>
     </div>
     <br>
-
     <div class="container" style="background-color: white; border-radius: 10px;">
         <div class="container container-formulario">
             <h5 style="color: #009fe3; font-weight: 600; margin-bottom: 20px;">Dependentes</h5>
@@ -211,14 +214,10 @@
         </div>
     </div>
     <br>
- 
     <div class="container" style="display: flex; justify-content: end;">
-       
-            <button class="btn" name="Submit" type="submit" >Enviar</button>
-        
+        <button class="btn" name="Submit" type="submit" form="DadosDoTitular">Enviar</button>
     </div>
-
-    <script src="Script/script.js"></script>
+<script src="Script/script.js"></script>
 </body>
 
 </html>
