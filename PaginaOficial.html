@@ -37,7 +37,7 @@
                             <h6>Nome Completo</h6>
                         </label>
                         <input class="form-control form-control-md required" type="text" placeholder="Nome Completo"
-                            aria-label=".form-control-lg example" id="nome" oninput="validarNome()">
+                            aria-label=".form-control-lg example" id="nome" onchange="validarNome()">
                         <span class="span-required">Nome completo é necessário informar o nome e sobrenome.</span>
                     </div>
                     <div class="col-md-3 ">
@@ -45,16 +45,16 @@
                             <h6>CPF</h6>
                         </label>
                         <input class="form-control form-control-md required" type="text" placeholder="CPF"
-                            aria-label=".form-control-lg example" id="CPF" oninput="validarCPF()">
+                            aria-label=".form-control-lg example" id="CPF" onchange="validarCPF()">
                         <span class="span-required">CPF é requerido.</span>
                     </div>
                     <div class="col-md-3">
                         <label for="data-nascimento" class="form-label">
                             <h6>Data de Nascimento</h6>
                         </label>
-                        <input class="form-control form-control-md required" type="number" placeholder=" Data de Nascimento"
-                            aria-label=".form-control-lg example" id="data-nascimento">
-                        <span class="span-required">Data de nascimento é requerido.</span>
+                        <input class="form-control form-control-md required" type="text" placeholder=" Data de Nascimento"
+                            aria-label=".form-control-lg example" id="data-nascimento" onchange="validarDataNascimento()">
+                        <span class="span-required">Menores de 18 anos não podem se cadastrar.</span>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom: 10px;">
@@ -63,7 +63,7 @@
                             <h6>Nome da Mãe</h6>
                         </label>
                         <input class="form-control form-control-md required" type="text" placeholder="Nome da Mãe"
-                            aria-label=".form-control-lg example" id="nome-mae">
+                            aria-label=".form-control-lg example" id="nome-mae" onchange="validarNomeMae()">
                         <span class="span-required">Nome da mãe é requerido.</span>
                     </div>
                     <div class="col-md-3 ">
@@ -71,11 +71,14 @@
                             <h6>Estado Civil</h6>
                         </label>
                         <select class="form-select form-select-md required" aria-label=".form-control-lg example"
-                            id="estado-civil">
+                            id="estado-civil" onfocus="validarEstadoCivil()">
                             <option selected>Selecione...</option>
-                            <option value="1">Solteiro</option>
-                            <option value="2">Casada</option>
-                            <option value="3">Encalhada</option>
+                            <option value="1">Separado</option>
+                            <option value="2">Casado</option>
+                            <option value="3">Viúvo</option>
+                            <option value="4">Solteiro</option>
+                            <option value="5">Divorciado</option>
+                            <option value="6">Amasiado</option>
                         </select>
                         <span class="span-required">Estado civil é requerido.</span>
                     </div>
@@ -83,7 +86,7 @@
                         <label for="sexo" class="form-label">
                             <h6>Sexo</h6>
                         </label>
-                        <select class="form-select form-select-md required" aria-label=".form-control-lg example" id="sexo">
+                        <select class="form-select form-select-md required" aria-label=".form-control-lg example" id="sexo" onfocus="validarSexo()">
                             <option selected>Selecione...</option>
                             <option value="1">Masculino</option>
                             <option value="2">Feminino</option>
@@ -96,7 +99,7 @@
                         <label for="celular" class="form-label">
                             <h6>Celular</h6>
                         </label>
-                        <input class="form-control form-control-md required" type="number" placeholder="(00) 00000-0000"
+                        <input class="form-control form-control-md required" type="text" placeholder="(00) 00000-0000"
                             aria-label=".form-control-lg example" id="celular">
                         <span class="span-required">Celular é requerido.</span>
                     </div>
@@ -104,7 +107,7 @@
                         <label for="email" class="form-label">
                             <h6>E-mail</h6>
                         </label>
-                        <input class="form-control form-control-md required" type="email" placeholder="CPF"
+                        <input class="form-control form-control-md required" type="email" placeholder="E-mail"
                             aria-label=".form-control-lg example" id="email">
                         <span class="span-required">E-mail é requerido.</span>
                     </div>
@@ -167,12 +170,23 @@
                         <span class="span-required">Informe a cidade.</span>
                     </div>
                     <div class="col-md-3">
-                        <label for="estado" class="form-label">
+                        <label for="sexo" class="form-label">
                             <h6>Estado</h6>
                         </label>
-                        <input class="form-control form-control-md required" type="number" placeholder="Selecione..."
-                            aria-label=".form-control-lg example" id="cidade">
-                        <span class="span-required">Informe o estado.</span>
+                        <select class="form-select form-select-md required" aria-label=".form-control-lg example" id="sexo">
+                            <option selected>Selecione...</option>
+                            <option value="1">Estado1</option>
+                            <option value="2">Estado2</option>
+                            <option value="2">Estado3</option>
+                            <option value="2">Estado4</option>
+                            <option value="2">Estado5</option>
+                            <option value="2">Estado6</option>
+                            <option value="2">Estado7</option>
+                            <option value="2">Estado8</option>
+                            <option value="2">Estado9</option>
+                            <option value="2">Estado0</option>
+                        </select>
+                        <span class="span-required">Sexo é requerido.</span>
                     </div>
                 </div>
             </form>
@@ -217,7 +231,14 @@
     <div class="container" style="display: flex; justify-content: end;">
         <button class="btn" name="Submit" type="submit" form="DadosDoTitular">Enviar</button>
     </div>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 <script src="Script/script.js"></script>
+<!-- <script>
+    $('#CPF').mask('000.000.000-00');
+</script> -->
+
 </body>
 
 </html>

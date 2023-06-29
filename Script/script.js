@@ -1,3 +1,9 @@
+$('#CPF').mask('000.000.000-00');
+$('#data-nascimento').mask('00/00/0000 00:00:00');
+$('#celular').mask('(00) 00000-0000');
+$('#cep').mask('00000-000');
+
+// Sumir e aparecer responsável financeiro
 var btnResponsavelFinanceiro = document.getElementById("flexCheckChecked");
 
 btnResponsavelFinanceiro.addEventListener("click", function(){ 
@@ -10,6 +16,7 @@ btnResponsavelFinanceiro.addEventListener("click", function(){
         divResponsavelFinanceiro.style.display = "none";
     }
 })
+
 const form = document.getElementById('DadosDoTitular');
 const campos = document.querySelectorAll('.required');
 const spans = document.querySelectorAll('.span-required')
@@ -61,7 +68,6 @@ function validarCPF2(cpf) {
 }
 function validarNome(){
     var nomeDigitado = campos[0].value
-    // var resultado = nomeDigitado.trim().split(" ")
     nomeDigitado = nomeDigitado.trim();
     var resultado = nomeDigitado.split(" ");
     if(resultado.length <= 1){ 
@@ -71,12 +77,69 @@ function validarNome(){
         removeError(0);
     }
 }
-function validarCPF(){ debugger;
+function validarCPF(){
     var cpfDigitado = campos[1].value
     if(validarCPF2(cpfDigitado)){
         removeError(1);
     }
     else{
         setError(1);
+    }
+}
+function validarDataNascimento(){
+    var dataDigitada = campos[2].value; 
+    dataDigitada = dataDigitada.replace(/\//g, "/");
+    var data_array = dataDigitada.split("/"); 
+
+    if(data_array[0].length != 4){
+       dataDigitada = data_array[2]+"-"+data_array[1]+"-"+data_array[0]; 
+    }
+    
+
+    var hoje = new Date();
+    var nasc  = new Date(dataDigitada);
+    var idade = hoje.getFullYear() - nasc.getFullYear();
+    var m = hoje.getMonth() - nasc.getMonth();
+    if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
+    
+    if(idade < 18){
+       setError(2);
+       return false;
+    }
+ 
+    if(idade >= 18 && idade <= 60){
+       removeError(2);
+       return true;
+    }   
+
+    return false;
+ }
+ function validarNomeMae(){
+    var nomeDigitado = campos[3].value
+    nomeDigitado = nomeDigitado.trim();
+    var resultado = nomeDigitado.split(" ");
+    if(resultado.length <= 1){ 
+        setError(3);
+    }
+    else{
+        removeError(3);
+    }
+}
+function validarEstadoCivil(){
+    var campoSelecionado = campos[4].value;
+    if(campoSelecionado = "Selecione..."){
+        setError(4);
+    }
+    else{
+        removeError(4);
+    }
+}
+function validarSexo(){
+    var campoSelecionado = campos[5].value;
+    if(campoSelecionado = "Selecione..."){
+        setError(5);
+    }
+    else{
+        removeError(5);
     }
 }
