@@ -1,7 +1,7 @@
 $('#CPF').mask('000.000.000-00');
 $('#data-nascimento').mask('00/00/0000 00:00:00');
 $('#celular').mask('(00) 00000-0000');
-$('#cep').mask('00000-000');
+$('#CEP').mask('00000-000');
 
 // Sumir e aparecer responsável financeiro
 var btnResponsavelFinanceiro = document.getElementById("flexCheckChecked");
@@ -19,7 +19,7 @@ btnResponsavelFinanceiro.addEventListener("click", function(){
 
 const form = document.getElementById('DadosDoTitular');
 const campos = document.querySelectorAll('.required');
-const spans = document.querySelectorAll('.span-required')
+const spans = document.querySelectorAll('.span-required');
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 function setError(index){
@@ -125,9 +125,9 @@ function validarDataNascimento(){
         removeError(3);
     }
 }
-function validarEstadoCivil(){
+function validarEstadoCivil(){ debugger;
     var campoSelecionado = campos[4].value;
-    if(campoSelecionado = "Selecione..."){
+    if(campoSelecionado == "1"){
         setError(4);
     }
     else{
@@ -136,7 +136,7 @@ function validarEstadoCivil(){
 }
 function validarSexo(){
     var campoSelecionado = campos[5].value;
-    if(campoSelecionado = "Selecione..."){
+    if(campoSelecionado == "1"){
         setError(5);
     }
     else{
@@ -200,9 +200,16 @@ function validarTelefone(){
         setError(6)
         return false;
     }
-
     //se passar por todas as validações acima, então está tudo certo
     {removeError(6)
     return true;
     };
+}
+function validarEmail(){
+    if(emailRegex.test(campos[7].value)){
+        removeError(7);
+    }
+    else{
+        setError(7);
+    }
 }

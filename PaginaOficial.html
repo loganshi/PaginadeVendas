@@ -38,7 +38,8 @@
                         </label>
                         <input class="form-control form-control-md required" type="text" placeholder="Nome Completo"
                             aria-label=".form-control-lg example" id="nome" onchange="validarNome()">
-                        <span class="span-required">Nome completo é necessário informar o nome e sobrenome.</span>
+                        <span class="span-required">Informe o nome e sobrenome.</span>
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
                     </div>
                     <div class="col-md-3 ">
                         <label for="CPF" class="form-label">
@@ -46,7 +47,8 @@
                         </label>
                         <input class="form-control form-control-md required" type="text" placeholder="CPF"
                             aria-label=".form-control-lg example" id="CPF" onchange="validarCPF()">
-                        <span class="span-required">CPF é requerido.</span>
+                        <span class="span-required">Insira um CPF válido.</span>
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
                     </div>
                     <div class="col-md-3">
                         <label for="data-nascimento" class="form-label">
@@ -55,43 +57,47 @@
                         <input class="form-control form-control-md required" type="text" placeholder=" Data de Nascimento"
                             aria-label=".form-control-lg example" id="data-nascimento" onchange="validarDataNascimento()">
                         <span class="span-required">Menores de 18 anos não podem se cadastrar.</span>
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom: 10px;">
                     <div class="col-md-6">
                         <label for="nome-mae" class="form-label">
-                            <h6>Nome da Mãe</h6>
+                            <h6>Nome Completo da Mãe</h6>
                         </label>
                         <input class="form-control form-control-md required" type="text" placeholder="Nome da Mãe"
                             aria-label=".form-control-lg example" id="nome-mae" onchange="validarNomeMae()">
-                        <span class="span-required">Nome da mãe é requerido.</span>
+                        <span class="span-required">Informe o nome e sobrenome.</span>
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
                     </div>
                     <div class="col-md-3 ">
                         <label for="estado-civil" class="form-label">
                             <h6>Estado Civil</h6>
                         </label>
                         <select class="form-select form-select-md required" aria-label=".form-control-lg example"
-                            id="estado-civil" onfocus="validarEstadoCivil()">
-                            <option selected>Selecione...</option>
-                            <option value="1">Separado</option>
-                            <option value="2">Casado</option>
-                            <option value="3">Viúvo</option>
-                            <option value="4">Solteiro</option>
-                            <option value="5">Divorciado</option>
-                            <option value="6">Amasiado</option>
+                            id="estado-civil" onchange="validarEstadoCivil()">
+                            <option value="1">Selecione...</option>
+                            <option value="2">Separado</option>
+                            <option value="3">Casado</option>
+                            <option value="4">Viúvo</option>
+                            <option value="5">Solteiro</option>
+                            <option value="6">Divorciado</option>
+                            <option value="7">Amasiado</option>
                         </select>
-                        <span class="span-required">Estado civil é requerido.</span>
+                        <span class="span-required">Selecione uma opção.</span>
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
                     </div>
                     <div class="col-md-3">
                         <label for="sexo" class="form-label">
                             <h6>Sexo</h6>
                         </label>
-                        <select class="form-select form-select-md required" aria-label=".form-control-lg example" id="sexo" onfocus="validarSexo()">
-                            <option selected>Selecione...</option>
-                            <option value="1">Masculino</option>
-                            <option value="2">Feminino</option>
+                        <select class="form-select form-select-md required" aria-label=".form-control-lg example" id="sexo" onchange="validarSexo()">
+                            <option value="1">Selecione...</option>
+                            <option value="2">Masculino</option>
+                            <option value="3">Feminino</option>
                         </select>
-                        <span class="span-required">Sexo é requerido.</span>
+                        <span class="span-required">Selecione uma opção.</span>
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom: 10px;">
@@ -101,15 +107,17 @@
                         </label>
                         <input class="form-control form-control-md required" type="text" placeholder="(00) 00000-0000"
                             aria-label=".form-control-lg example" id="celular" onchange="validarTelefone()">
-                        <span class="span-required">Celular é requerido.</span>
+                        <span class="span-required">Insira um número de celular válido.</span>
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
                     </div>
                     <div class="col-md-6 ">
                         <label for="email" class="form-label">
                             <h6>E-mail</h6>
                         </label>
-                        <input class="form-control form-control-md required" type="email" placeholder="E-mail"
-                            aria-label=".form-control-lg example" id="email">
-                        <span class="span-required">E-mail é requerido.</span>
+                        <input class="form-control form-control-md required" type="text" placeholder="E-mail"
+                            aria-label=".form-control-lg example" id="email" onchange="validarEmail()">
+                        <span class="span-required">Insira um E-mail válido.</span>
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
                     </div>
                 </div>
                 <div class="form-check">
@@ -121,12 +129,13 @@
                 <hr>
                 <div class="row" style="margin-bottom: 10px;">
                     <div class="col-md-3">
-                        <label for="cep" class="form-label">
+                        <label for="CEP" class="form-label">
                             <h6>CEP</h6>
                         </label>
                         <input class="form-control form-control-md required" type="text" placeholder="CEP"
-                            aria-label=".form-control-lg example" id="cep">
-                        <span class="span-required">Informe o CEP.</span>
+                            aria-label=".form-control-lg example" id="CEP">
+                        <span class="span-required">Insira um CEP válido.</span>    
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
                     </div>
                     <div class="col-md-6 ">
                         <label for="logradouro" class="form-label">
@@ -135,6 +144,7 @@
                         <input class="form-control form-control-md required" type="text" placeholder="Logradouro"
                             aria-label=".form-control-lg example" id="logradouro">
                         <span class="span-required">Informe o logradouro.</span>
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
                     </div>
                     <div class="col-md-3">
                         <label for="numero" class="form-label">
@@ -143,6 +153,7 @@
                         <input class="form-control form-control-md required" type="number" placeholder=" Número"
                             aria-label=".form-control-lg example" id="numero">
                         <span class="span-required">Informe o número.</span>
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom: 10px;">
