@@ -225,31 +225,137 @@
                         aria-label=".form-control-lg example" id="CPF">
                 </div>
             </div>
+            
         </div>
     </div>
     <br>
+
+
     <div class="container" style="background-color: white; border-radius: 10px;">
         <div class="container container-formulario">
             <h5 style="color: #009fe3; font-weight: 600; margin-bottom: 20px;">Dependentes</h5>
-            <div class="text-center">
+            <div class="text-center" id="imgDependente" style="display: block;">
                 <img src="img/empty.png" class="dependentes">
                 <h5 style="margin-bottom: 20px;">Seu plano ainda não possui dependentes cadastrados.</h5>
-                <button type="button" class="btn">Adicionar Dependentes</button>
+                <button type="button" class="btn" id="adicionarDependente">Adicionar Dependentes</button>
             </div>
+
+            <section style="display: none;" id="divDependente">
+            <div class="container container-dependente">
+                <br>
+                <h5>Cadastro de dependente</h5>
+                <form id="dependente">
+                <div class="row" style="margin-bottom: 10px;">
+                    <div class="col-md-6">
+                        <label for="nome" class="form-label">
+                            <h6>Nome Completo</h6>
+                        </label>
+                        <input class="form-control form-control-md required" type="text" placeholder="Nome Completo"
+                            aria-label=".form-control-lg example" id="nome" onchange="validarNome()">
+                        <span class="span-required">Informe o nome e sobrenome.</span>
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
+                    </div>
+                    <div class="col-md-3 ">
+                        <label for="CPF" class="form-label">
+                            <h6>CPF</h6>
+                        </label>
+                        <input class="form-control form-control-md required" type="text" placeholder="CPF"
+                            aria-label=".form-control-lg example" id="CPF" onchange="validarCPF()">
+                        <span class="span-required">Insira um CPF válido.</span>
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="data-nascimento" class="form-label">
+                            <h6>Data de Nascimento</h6>
+                        </label>
+                        <input class="form-control form-control-md required" type="text" placeholder=" Data de Nascimento"
+                            aria-label=".form-control-lg example" id="data-nascimento" onchange="validarDataNascimento()">
+                        <span class="span-required">Menores de 18 anos não podem se cadastrar.</span>
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom: 10px;">
+                    <div class="col-md-6">
+                        <label for="nome-mae" class="form-label">
+                            <h6>Nome Completo da Mãe</h6>
+                        </label>
+                        <input class="form-control form-control-md required" type="text" placeholder="Nome da Mãe"
+                            aria-label=".form-control-lg example" id="nome-mae" onchange="validarNomeMae()">
+                        <span class="span-required">Informe o nome e sobrenome.</span>
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
+                    </div>
+                    <div class="col-md-2 ">
+                        <label for="estado-civil" class="form-label">
+                            <h6>Estado Civil</h6>
+                        </label>
+                        <select class="form-select form-select-md required" aria-label=".form-control-lg example"
+                            id="estado-civil" onchange="validarEstadoCivil()">
+                            <option value="1">Selecione...</option>
+                            <option value="2">Separado</option>
+                            <option value="3">Casado</option>
+                            <option value="4">Viúvo</option>
+                            <option value="5">Solteiro</option>
+                            <option value="6">Divorciado</option>
+                            <option value="7">Amasiado</option>
+                        </select>
+                        <span class="span-required">Selecione uma opção.</span>
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
+                    </div>
+                    <div class="col-md-2 ">
+                        <label for="estado-civil" class="form-label">
+                            <h6>Parentesco</h6>
+                        </label>
+                        <select class="form-select form-select-md required" aria-label=".form-control-lg example"
+                            id="estado-civil" onchange="validarEstadoCivil()">
+                            <option value="1">Selecione...</option>
+                            <option value="2">Tio(a)</option>
+                            <option value="3">Irmão(ã)</option>
+                            <option value="4">Sobrinho(a)</option>
+                            <option value="5">Neto(a)</option>
+                            <option value="6">Pai</option>
+                            <option value="7">Esposa(o)</option>
+                            <option value="8">Filha</option>
+                            <option value="9">Avô(ó)</option>
+                            <option value="10">Filho</option>
+                            <option value="11">Mãe</option>
+                        </select>
+                        <span class="span-required">Selecione uma opção.</span>
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="sexo" class="form-label">
+                            <h6>Sexo</h6>
+                        </label>
+                        <select class="form-select form-select-md required" aria-label=".form-control-lg example" id="sexo" onchange="validarSexo()">
+                            <option value="1">Selecione...</option>
+                            <option value="2">Masculino</option>
+                            <option value="3">Feminino</option>
+                        </select>
+                        <span class="span-required">Selecione uma opção.</span>
+                        <span class="span-vazio">O campo não pode ficar vazio.</span>
+                    </div>
+                </div>
+            </form>
+            </div>
+            <div class="d-flex justify-content-end mt-3" style="justify-content: space-evenly;">
+                <button class="btn me-3 cancelar" id="cancelar" onclick="cancelar()">Cancelar</button>
+                <button class="btn" id="cadastrarDependente" onclick="adicionar()">Cadastrar dependente</button>
+            </div>
+        </section>
         </div>
-    </div>
+    </div> 
+
+    
     <br>
     <div class="container" style="display: flex; justify-content: end;">
         <button class="btn" name="Submit" type="submit" form="DadosDoTitular">Enviar</button>
     </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 <script src="Script/script.js"></script>
-<!-- <script>
-    $('#CPF').mask('000.000.000-00');
-</script> -->
-
 </body>
 
 </html>

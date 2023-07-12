@@ -17,6 +17,46 @@ btnResponsavelFinanceiro.addEventListener("click", function(){
     }
 })
 
+
+var btnDependente = document.getElementById("adicionarDependente");
+
+btnDependente.addEventListener("click", function(){
+
+    var imgDependente = document.getElementById("imgDependente");
+    var divDependente = document.getElementById("divDependente");
+
+    if(divDependente.style.display === "none"){
+        divDependente.style.display = "block";
+    }
+    if(imgDependente.style.display === "block"){
+    imgDependente.style.display = "none";
+    }
+    else{
+        divDependente.style.display = "none";
+        imgDependente.style.display = "block";
+    }
+})
+
+var btnCancelarDependente = document.getElementById("cancelar");
+
+btnCancelarDependente.addEventListener("click", function(){
+
+    var imgDependente = document.getElementById("imgDependente");
+    var divDependente = document.getElementById("divDependente");
+
+    if(divDependente.style.display === "block"){
+        divDependente.style.display = "none";
+    }
+    if(imgDependente.style.display === "none"){
+    imgDependente.style.display = "block";
+    }
+    else{
+        divDependente.style.display = "block";
+        imgDependente.style.display = "none";
+    }
+})
+
+
 const form = document.getElementById('DadosDoTitular');
 const campos = document.querySelectorAll('.required');
 const spans = document.querySelectorAll('.span-required');
@@ -212,4 +252,13 @@ function validarEmail(){
     else{
         setError(7);
     }
+}
+function cancelar(){
+    alert("Alert Cancelar");
+}
+function adicionar(){
+    this.lerDados
+}
+function lerDados(){
+    alert("Dependente adicionado");
 }
