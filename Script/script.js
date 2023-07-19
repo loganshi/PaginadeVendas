@@ -254,7 +254,6 @@ function validarEmail(){
     }
 }
 function cancelar(){
-    alert("Alert Cancelar");
 }
 function adicionar(){
     this.lerDados
